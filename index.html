@@ -57,42 +57,26 @@
       gap: 1.5rem;
     }
 
-    .logo-mark{
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  line-height: 1;
-}
-.brand-logo{
-  height: 56px;
-  width: auto;
-  display: block;
-  transform: scale(1.35);       /* zoom the logo */
-  transform-origin: left center; /* keep it anchored */
-}
+    .logo-mark { display: flex; align-items: center; gap: 0.75rem; }
 
-.brand-logo { height: 46px; width: auto; display: block; }
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #9fd3ff, #4ea3ff 40%, #233a72 78%);
+      box-shadow: 0 0 18px rgba(78,163,255,0.7);
+      position: relative;
+      overflow: hidden;
+    }
 
-    .logo-icon{
-  width: 56px;
-  height: 56px;
-  min-width: 56px;          /* prevents it from shrinking */
-  border-radius: 999px;
-  background-color: transparent;
-
-  /* Embedded logo (no extra file needed) */
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAABRuUlEQVR42u3dd3hcV5k/8O/7nltmRpLlXmXJluUmtxilh0R2EkglHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMdxHMd5L/j/ECGS+1ek5WAAAAAASUVORK5CYII=");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-
-  /* optional glow to match your theme */
-  box-shadow: 0 0 16px rgba(78,163,255,0.45);
-}
-
-/* turn off the old decorative ring */
-.logo-icon::before{ content: none; }
-
+    .logo-icon::before {
+      content: "";
+      position: absolute;
+      inset: 28%;
+      border-radius: 999px;
+      border: 2px solid rgba(5,7,18,0.7);
+      transform: rotate(18deg);
+    }
 
     .logo-text-main { font-weight: 650; letter-spacing: 0.03em; font-size: 1.05rem; }
     .logo-text-sub {
