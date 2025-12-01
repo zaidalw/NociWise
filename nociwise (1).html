@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NociWise | Pain Translation & Strategy</title>
+  <meta name="description" content="NociWise helps biotech, CROs, and clinical teams de-risk pain and analgesia programs through translational science, smarter endpoints, and clear decision strategies.">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-alt: #11172a;
+      --accent: #4ea3ff;
+      --accent-soft: rgba(78,163,255,0.15);
+      --text-main: #f7f7fb;
+      --text-muted: #a9b3cf;
+      --card-bg: #151c30;
+      --border-soft: #232a42;
+      --max-width: 1100px;
+      --radius-xl: 18px;
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.45);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      color: var(--text-main);
+      background: radial-gradient(circle at top, #17213c 0, #050712 55%, #02020b 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      backdrop-filter: blur(18px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(to bottom, rgba(5,7,18,0.95), rgba(5,7,18,0.85));
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.9rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .logo-mark { display: flex; align-items: center; gap: 0.75rem; }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #9fd3ff, #4ea3ff 40%, #233a72 78%);
+      box-shadow: 0 0 18px rgba(78,163,255,0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-icon::before {
+      content: "";
+      position: absolute;
+      inset: 28%;
+      border-radius: 999px;
+      border: 2px solid rgba(5,7,18,0.7);
+      transform: rotate(18deg);
+    }
+
+    .logo-text-main { font-weight: 650; letter-spacing: 0.03em; font-size: 1.05rem; }
+    .logo-text-sub {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.16em;
+    }
+
+    .nav-links { display: flex; gap: 1rem; font-size: 0.9rem; color: var(--text-muted); }
+    .nav-links a { padding: 0.35rem 0.65rem; border-radius: 999px; }
+    .nav-links a:hover { background: rgba(255,255,255,0.04); color: var(--text-main); }
+
+    .nav-cta {
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(78,163,255,0.7);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: #dfe9ff;
+      background: radial-gradient(circle at top, rgba(78,163,255,0.36), rgba(8,11,30,0.95));
+      box-shadow: 0 0 24px rgba(78,163,255,0.5);
+    }
+
+    .nav-cta:hover { filter: brightness(1.08); }
+
+    main { max-width: var(--max-width); margin: 0 auto; padding: 1.5rem 1.4rem 3.5rem; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 2.3rem;
+      align-items: center;
+      padding: 2.8rem 0 2.2rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: minmax(0, 1fr); padding-top: 2rem; }
+      .nav-links { display: none; }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15,115,255,0.18);
+      border: 1px solid rgba(78,163,255,0.45);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #7fffbb;
+      box-shadow: 0 0 9px #7fffbb;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 3vw + 1.2rem, 3.2rem);
+      margin: 0 0 0.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 span { color: #a5d2ff; }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-tagline {
+      font-size: 0.88rem;
+      color: #c5d4ff;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-primary {
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 0.8rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 550;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #4ea3ff, #9ed3ff);
+      color: #050712;
+      box-shadow: 0 14px 30px rgba(78,163,255,0.5);
+      display: inline-block;
+    }
+
+    .btn-primary:hover { filter: brightness(1.06); transform: translateY(-1px); }
+
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 0.8rem 1.1rem;
+      border: 1px solid rgba(255,255,255,0.16);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      background: rgba(10,13,30,0.7);
+      display: inline-block;
+    }
+
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.35); color: var(--text-main); }
+
+    .hero-note { font-size: 0.8rem; color: var(--text-muted); }
+
+    .hero-panel {
+      background: radial-gradient(circle at top left, #25355c, #050712);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      padding: 1.5rem 1.5rem 1.4rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(78,163,255,0.14), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(127,255,187,0.12), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .kp-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.1rem;
+      z-index: 1;
+    }
+
+    .kp-card {
+      background: rgba(5,7,18,0.72);
+      border-radius: 15px;
+      padding: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 12px 22px rgba(0,0,0,0.35);
+    }
+
+    .kp-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .kp-value { font-size: 0.9rem; font-weight: 550; }
+
+    .kp-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(127,255,187,0.09);
+      border: 1px solid rgba(127,255,187,0.5);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #cbffe6;
+      margin-top: 0.55rem;
+    }
+
+    .kp-pill-dot { width: 6px; height: 6px; border-radius: 999px; background: #7fffbb; }
+
+    .section { margin-top: 2.8rem; }
+
+    .section-header { margin-bottom: 1.3rem; }
+    .section-kicker {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .section-title { font-size: 1.3rem; margin: 0; }
+
+    .section-description {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin-top: 0.4rem;
+    }
+
+    .cards-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; }
+
+    @media (max-width: 900px) { .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 650px) { .cards-grid { grid-template-columns: minmax(0, 1fr); } }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      padding: 1.1rem 1rem 1.15rem;
+      box-shadow: 0 16px 30px rgba(0,0,0,0.4);
+    }
+
+    .card-title { font-size: 1rem; margin: 0 0 0.3rem; }
+    .card-tagline {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-body { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.7rem; }
+
+    .pill-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem; }
+
+    .pill {
+      font-size: 0.72rem;
+      border-radius: 999px;
+      padding: 0.22rem 0.55rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #d8e2ff;
+      background: rgba(10,14,30,0.8);
+    }
+
+    .muted { color: var(--text-muted); font-size: 0.82rem; }
+
+    ul { padding-left: 1.1rem; margin: 0.4rem 0 0.2rem; color: var(--text-muted); font-size: 0.9rem; }
+    li + li { margin-top: 0.15rem; }
+
+    .pricing-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.7rem; }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 1.7rem;
+      background: rgba(10,14,30,0.8);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      padding: 1.4rem 1.3rem 1.5rem;
+      margin-top: 1.7rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    @media (max-width: 780px) { .contact { grid-template-columns: minmax(0, 1fr); } }
+
+    .contact h3 { margin-top: 0; margin-bottom: 0.4rem; }
+
+    .contact-info { font-size: 0.9rem; color: var(--text-muted); }
+    .contact-info p { margin: 0.2rem 0; }
+
+    .contact-highlight { font-size: 0.86rem; margin-top: 0.8rem; color: #c5d4ff; }
+
+    .contact-form label { display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(4,6,20,0.9);
+      color: var(--text-main);
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-form textarea { min-height: 100px; resize: vertical; }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 1.2rem 1.4rem 1.6rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background: #050714;
+    }
+
+    footer .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .footer-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-muted); }
+
+    .disclaimer {
+      max-width: var(--max-width);
+      margin: 1.4rem auto 0;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      padding: 0 1.4rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo-mark">
+      <div class="logo-icon" aria-hidden="true"></div>
+      <div>
+        <div class="logo-text-main">NociWise</div>
+        <div class="logo-text-sub">Pain Translation &amp; Strategy</div>
+      </div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#packages">Packages</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="nav-cta">Let’s Talk</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <div>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span>Translational pain science &amp; trial strategy</span>
+      </div>
+      <h1>
+        Smarter decisions for <span>pain &amp; analgesia</span> programs.
+      </h1>
+      <div class="hero-tagline">NociWise &mdash; Pain Translation &amp; Strategy</div>
+      <p class="hero-subtitle">
+        NociWise helps biotech, CROs, and clinical teams de-risk pain programs by tightening
+        the chain from target and mechanism to models, biomarkers, endpoints, and go/no-go decisions.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Request Intro Call</a>
+        <a href="#packages" class="btn-ghost">View Consulting Packages</a>
+      </div>
+
+      <p class="hero-note">
+        Domain: <strong>nociwise.com</strong> · Remote-friendly from Dallas–Fort Worth, TX
+      </p>
+    </div>
+
+    <aside class="hero-panel" aria-label="Key capabilities">
+      <div class="kp-grid">
+        <div class="kp-card">
+          <div class="kp-label">Core focus</div>
+          <div class="kp-value">Translational pain science from bench to protocol.</div>
+          <div class="pill-list">
+            <span class="pill">Target &amp; model strategy</span>
+            <span class="pill">Endpoints &amp; trial design</span>
+            <span class="pill">Biomarkers &amp; assays</span>
+          </div>
+        </div>
+        <div class="kp-card">
+          <div class="kp-label">Who we support</div>
+          <div class="kp-value">Early-stage biotech, CRO teams, and academic trials.</div>
+          <div class="kp-pill">
+            <span class="kp-pill-dot"></span>
+            <span>Evidence-first, practical, transparent</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section" id="services">
+    <div class="section-header">
+      <div class="section-kicker">Services</div>
+      <h2 class="section-title">What NociWise does</h2>
+      <p class="section-description">
+        NociWise combines deep pain neurobiology with pragmatic trial and program design—so your team
+        gets clearer signals, tighter rationale, and cleaner decisions.
+      </p>
+    </div>
+
+    <div class="cards-grid">
+      <article class="card">
+        <h3 class="card-title">Translational Program Strategy</h3>
+        <p class="card-tagline">From mechanism to go/no-go</p>
+        <p class="card-body">
+          Align targets, models, biomarkers, and endpoints into a coherent translational narrative that
+          stands up to investor, internal, and regulatory scrutiny.
+        </p>
+        <div class="pill-list">
+          <span class="pill">Target &amp; indication mapping</span>
+          <span class="pill">Model &amp; assay selection</span>
+          <span class="pill">Evidence roadmap</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3 class="card-title">Pain Trial Protocol Review</h3>
+        <p class="card-tagline">Endpoint &amp; signal optimization</p>
+        <p class="card-body">
+          Stress-test your protocol for feasibility, noise, and credibility: inclusion/exclusion,
+          endpoints, measurement schedules, and operational risks.
+        </p>
+        <ul>
+          <li>Endpoint hierarchy and timing</li>
+          <li>Confounds and bias control</li>
+          <li>Recruitment &amp; burden review</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3 class="card-title">Biomarker &amp; Assay Planning</h3>
+        <p class="card-tagline">Mechanism-linked readouts</p>
+        <p class="card-body">
+          Design biomarker and assay strategies that reflect the biology of your program and support
+          translational claims.
+        </p>
+        <div class="pill-list">
+          <span class="pill">Mechanism-tied markers</span>
+          <span class="pill">Assay feasibility</span>
+          <span class="pill">Sampling &amp; analysis logic</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="packages">
+    <div class="section-header">
+      <div class="section-kicker">Packages</div>
+      <h2 class="section-title">Structured, outcome-focused engagements</h2>
+      <p class="section-description">
+        Each package is scoped around specific deliverables and timelines. Pricing is tailored to complexity and urgency.
+      </p>
+    </div>
+
+    <div class="cards-grid">
+      <article class="card">
+        <h3 class="card-title">Translational De-Risk Sprint</h3>
+        <p class="card-tagline">10–14 days · fixed scope</p>
+        <p class="card-body">Tighten your pain/analgesia program from mechanism to decision gates.</p>
+        <ul>
+          <li>Target–indication–patient mapping</li>
+          <li>Preclinical model &amp; endpoint strategy</li>
+          <li>Biomarker &amp; assay outline</li>
+          <li>Go/no-go and risk register</li>
+        </ul>
+        <p class="pricing-note">Ideal before major internal reviews, financing, or partnering discussions.</p>
+      </article>
+
+      <article class="card">
+        <h3 class="card-title">Protocol &amp; Endpoint Audit</h3>
+        <p class="card-tagline">5–10 days · one-time review</p>
+        <p class="card-body">A focused scientific and operational review of a pain trial protocol.</p>
+        <ul>
+          <li>Annotated protocol with comments</li>
+          <li>Endpoint and schedule critique</li>
+          <li>Signal/noise and feasibility assessment</li>
+          <li>Priority recommendations list</li>
+        </ul>
+        <p class="pricing-note">Works well for sponsor, CRO, and academic-led pain trials.</p>
+      </article>
+
+      <article class="card">
+        <h3 class="card-title">Data → Figures → Story Sprint</h3>
+        <p class="card-tagline">5–12 days · dataset-based</p>
+        <p class="card-body">Turn complex experimental data into clear figures and a coherent scientific narrative.</p>
+        <ul>
+          <li>Clean analysis outputs and plots</li>
+          <li>Publication-ready figure layouts</li>
+          <li>Results text and figure legends</li>
+          <li>Reproducibility and file-structure notes</li>
+        </ul>
+        <p class="pricing-note">For internal decks, manuscripts, or partnering materials.</p>
+      </article>
+    </div>
+
+    <p class="pricing-note">
+      Retainer-based advisory support (e.g., monthly office hours and ad hoc reviews) is available for select teams.
+      Contact us to discuss fit and availability.
+    </p>
+  </section>
+
+  <section class="section" id="about">
+    <div class="section-header">
+      <div class="section-kicker">About</div>
+      <h2 class="section-title">Scientific depth, practical execution</h2>
+      <p class="section-description">
+        NociWise is led by a translational pain scientist with postdoctoral experience in anesthesiology and pain management,
+        combining mechanistic insight with hands-on work in models, assays, and analysis.
+      </p>
+    </div>
+
+    <div class="cards-grid">
+      <article class="card">
+        <h3 class="card-title">Scientific background</h3>
+        <p class="card-body">Expertise across pain neurobiology, nociceptor signaling, and translational models, including:</p>
+        <ul>
+          <li>GPCR / cAMP signaling and ion-channel modulation</li>
+          <li>DRG neurons and pain-relevant cell models</li>
+          <li>qPCR, RNAseq, and molecular readouts</li>
+          <li>Behavioral and functional pain endpoints</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3 class="card-title">How we work</h3>
+        <p class="card-body">Every engagement is built around:</p>
+        <ul>
+          <li>Evidence-first recommendations</li>
+          <li>Clear assumptions &amp; limitations</li>
+          <li>Practical next steps for your team</li>
+          <li>Transparent documentation</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3 class="card-title">Who we serve</h3>
+        <p class="card-body">NociWise typically partners with:</p>
+        <ul>
+          <li>Biotech teams building or refining pain programs</li>
+          <li>CRO project leaders seeking specialized input</li>
+          <li>Academic investigators designing pain studies</li>
+        </ul>
+        <p class="muted">If you work in nociception, analgesia, or pain-related targets, NociWise can help sharpen the path from data to decision.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-header">
+      <div class="section-kicker">Contact</div>
+      <h2 class="section-title">Discuss your program or trial</h2>
+      <p class="section-description">
+        Share a brief overview of your program, where you are in development, and what decisions are coming up.
+        You’ll receive a short reply outlining whether and how NociWise can help.
+      </p>
+    </div>
+
+    <div class="contact">
+      <div>
+        <h3>Get in touch</h3>
+        <div class="contact-info">
+          <p><strong>Email:</strong> <a href="mailto:hello@nociwise.com">hello@nociwise.com</a></p>
+          <p><strong>Location:</strong> Dallas–Fort Worth, Texas (remote-friendly)</p>
+        </div>
+        <p class="contact-highlight">
+          Typical response time: 2–3 business days. Please avoid including confidential or patient-identifying information
+          in your initial note.
+        </p>
+      </div>
+
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Prototype only — connect a real form handler (e.g., Formspree, Netlify Forms, or your CRM).');">
+        <label for="name">Name</label>
+        <input id="name" name="name" placeholder="Your name" type="text">
+
+        <label for="org">Organization</label>
+        <input id="org" name="org" placeholder="Company / institution" type="text">
+
+        <label for="email">Email</label>
+        <input id="email" name="email" placeholder="you@example.com" type="email">
+
+        <label for="message">Brief overview</label>
+        <textarea id="message" name="message" placeholder="Tell us about your program, trial, or question."></textarea>
+
+        <button type="submit" class="btn-primary">Send</button>
+        <p class="muted">This form is currently a visual prototype. Connect your preferred form/CRM to capture submissions.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<div class="disclaimer">
+  <strong>Disclaimer:</strong> NociWise provides scientific and strategic consulting services only.
+  It does not offer medical care, diagnosis, treatment recommendations for individual patients, or legal advice.
+  Any consulting work is subject to applicable institutional conflict-of-interest and outside-activity policies.
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>© <span id="year"></span> NociWise. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="#top">Back to top</a>
+      <a href="mailto:hello@nociwise.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
