@@ -78,13 +78,23 @@
 }
 
 
-    .logo-text-main { font-weight: 650; letter-spacing: 0.03em; font-size: 1.05rem; }
-    .logo-text-sub {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      letter-spacing: 0.16em;
-    }
+   .logo-text-main{
+  font-weight: 750;
+  letter-spacing: 0.01em;
+  font-size: 1.55rem;   /* adjust 1.4–1.7 if you want */
+  line-height: 1.05;
+}
+
+.logo-text-sub{
+  margin-top: 0.22rem;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.26em;
+  line-height: 1.1;
+}
+.logo-mark { display:flex; align-items:center; gap:0.9rem; }
+
 
     .nav-links { display: flex; gap: 1rem; font-size: 0.9rem; color: var(--text-muted); }
     .nav-links a { padding: 0.35rem 0.65rem; border-radius: 999px; }
@@ -454,9 +464,11 @@
 .logo-icon { display: grid; place-items: center; }
 .logo-icon svg { display: block; }
 
-        <div class="logo-text-main">NociWise</div>
-        <div class="logo-text-sub">Pain Translation &amp; Strategy</div>
-      </div>
+        <div>
+  <div class="logo-text-main">NociWise</div>
+  <div class="logo-text-sub">PAIN TRANSLATION &amp; STRATEGY</div>
+</div>
+
     </div>
 
     <nav class="nav-links">
